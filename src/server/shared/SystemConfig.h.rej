@@ -1,0 +1,17 @@
+***************
+*** 24,30 ****
+  #include "Define.h"
+  #include "revision.h"
+  
+- #define _PACKAGENAME "FaceCore"
+  
+  #if TRINITY_ENDIAN == TRINITY_BIGENDIAN
+  # define _ENDIAN_STRING "big-endian"
+--- 24,30 ----
+  #include "Define.h"
+  #include "revision.h"
+  
++ #define _PACKAGENAME "GSVCore"
+  
+  #if TRINITY_ENDIAN == TRINITY_BIGENDIAN
+  # define _ENDIAN_STRING "big-endian"

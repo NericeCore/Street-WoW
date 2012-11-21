@@ -10,6 +10,7 @@
 
 set(scripts_STAT_SRCS
   ${scripts_STAT_SRCS}
+  Custom/chat_censure.cpp 
   Custom/hunterpet_vendor.cpp
   Custom/npc_customize.cpp      
   Custom/npc_mount.cpp 
@@ -17,7 +18,7 @@ set(scripts_STAT_SRCS
   Custom/npc_item_summon.cpp      
   Custom/dalaran_squirrel.cpp
   Custom/resetduel.cpp  
-  #Custom/killstreak_pvp_system.cpp  
+  Custom/killstreak_pvp_system.cpp  
   Custom/item_custom_stone.cpp  
   #Custom/item_requester.cpp
   Custom/allinone.cpp
@@ -30,7 +31,7 @@ set(scripts_STAT_SRCS
   Custom/npc_legion_master.cpp
   Custom/event_npc.cpp
   Custom/npc_vip.cpp  
-  Custom/levelnpc.cpp    
+  Custom/levelnpc.cpp   
 )
 
 message("  -> Prepared: Custom")

@@ -103,14 +103,7 @@ extern int main(int argc, char **argv)
     sLog->outString("<Ctrl-C> to stop.\n");
     sLog->outString("Using configuration file %s.", cfg_file);
 	sLog->outString("			 ");
- 	sLog->outString("Вы можете заказывать:");
- 	sLog->outString("Разные версии сборок серверов, с любыми патчами слежующих игр:");
- 	sLog->outString("WOW, AION, L2, MineCraft, COD, GTA, CS, L4D, BF, TF и другие... ");
-	sLog->outString("Компиляция под ОС (Windows/Linux)(32bit/64bit)"); 
- 	sLog->outString("Так же принимаем заказы на сайты и всевозможные веб обвязки игровых серверов");
-	sLog->outString("Оказываем помощь в настройке любых серверных машин");
- 	sLog->outString("Ваши идеи воплощаем в реальность, пишите..");
- 	sLog->outString("ICQ 366154748 | EMAIL Sergey@gamesv.ru | Skype SergeySVCooL");
+ 	sLog->outString("Специально для freeze-wow.ru");
  	sLog->outString("			 ");
     sLog->outDetail("%s (Library: %s)", OPENSSL_VERSION_TEXT, SSLeay_version(SSLEAY_VERSION));
 

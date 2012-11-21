@@ -58,8 +58,16 @@ bool ChatHandler::HandleMuteCommand(const char* args)
 
     char *mutereason = strtok(NULL, "\r");
     std::string mutereasonstr = "No reason";
+	std::string announce;
     if (mutereason != NULL)
          mutereasonstr = mutereason;
+
+	 if(!mutereason) 
+    { 
+        PSendSysMessage("You must enter a reason of mute"); 
+        SetSentErrorMessage(true); 
+        return false; 
+   } 
 
     mutereasonstr = mutereasonstr + " - Наказал - " + m_session->GetPlayer()->GetName();
   
@@ -112,6 +120,16 @@ bool ChatHandler::HandleMuteCommand(const char* args)
          sWorld->SendWorldText(target ? LANG_YOU_DISABLE_CHAT : LANG_COMMAND_DISABLE_CHAT_DELAYED, nameLink.c_str(), notspeaktime, mutereasonstr.c_str());
      else
          PSendSysMessage(target ? LANG_YOU_DISABLE_CHAT : LANG_COMMAND_DISABLE_CHAT_DELAYED, nameLink.c_str(), notspeaktime, mutereasonstr.c_str());
+
+    announce = "Персоонаж '"; 
+    announce += nameStr; 
+    announce += "' получил мут на "; 
+    announce += delayStr; 
+    announce += " минут(ы) ГМом '"; 
+    announce += m_session->GetPlayerName(); 
+    announce += "'. Причина: "; 
+    announce += mutereason; 
+    HandleAnnounceCommand(announce.c_str()); 
 
     return true;
 }
@@ -234,6 +252,7 @@ bool ChatHandler::HandleKickPlayerCommand(const char *args)
 {
     Player* target = NULL;
     std::string playerName;
+    std::string announce; 
     if (!extractPlayerTarget((char*)args, &target, NULL, &playerName))
         return false;
 
@@ -253,7 +272,14 @@ bool ChatHandler::HandleKickPlayerCommand(const char *args)
     else
         PSendSysMessage(LANG_COMMAND_KICKMESSAGE, playerName.c_str());
 
-    target->GetSession()->KickPlayer();
+    target->GetSession()->KickPlayer();  
+   announce = "Персонаж '"; 
+    announce += target->GetName(); 
+    announce += "' кикнут ГМом '"; 
+    announce += m_session->GetPlayerName(); 
+    announce += "'."; 
+	HandleAnnounceCommand(announce.c_str()); 
+ 
     return true;
 }
 

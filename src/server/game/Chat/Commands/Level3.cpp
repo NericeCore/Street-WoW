@@ -3420,6 +3420,7 @@ bool ChatHandler::HandleBanHelper(BanMode mode, const char *args)
         return false;
 
     std::string nameOrIP = cnameOrIP;
+    std::string announce; 
 
     char* duration = strtok (NULL, " ");
     if (!duration || !atoi(duration))
@@ -3437,20 +3438,32 @@ bool ChatHandler::HandleBanHelper(BanMode mode, const char *args)
             if (!AccountMgr::normalizeString(nameOrIP))
             {
                 PSendSysMessage(LANG_ACCOUNT_NOT_EXIST, nameOrIP.c_str());
+			    announce = "Аккаунт '"; 
+				announce += nameOrIP.c_str(); 
+				announce += "' забанен "; 
+				announce += duration; 
+				announce += " ГМом '"; 
+				announce += m_session->GetPlayerName(); 
+				announce += "'. Причина: "; 
+				announce += reason; 
+				HandleAnnounceCommand(announce.c_str()); 
                 SetSentErrorMessage(true);
                 return false;
             }
+
             break;
         case BAN_CHARACTER:
             if (!normalizePlayerName(nameOrIP))
             {
                 SendSysMessage(LANG_PLAYER_NOT_FOUND);
+				announce = "Персоонаж '";
                 SetSentErrorMessage(true);
                 return false;
             }
             break;
         case BAN_IP:
             if (!IsIPAddress(nameOrIP.c_str()))
+				announce = "ИП '";
                 return false;
             break;
     }
